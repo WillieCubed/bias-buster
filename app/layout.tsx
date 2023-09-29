@@ -11,9 +11,20 @@ const inter = Inter({ subsets: ["latin"] });
 // export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: "Bias Buster",
-  description: "Human or AI? Let's find out.",
-  metadataBase: new URL(process.env.APP_URL || "http://localhost:3000/"),
+  title: "NewsReal",
+  description:
+    "NewsReal is a game that tests your ability to distinguish real news from AI-generated content.",
+  metadataBase: new URL(
+    (process.env.APP_URL ?? process.env.VERCEL_URL) || "http://localhost:3000/",
+  ),
+  openGraph: {
+    siteName: "NewsReal",
+    title: "Play NewsReal",
+    description:
+      "NewsReal is a game that tests your ability to distinguish real news from AI-generated content. Play with your friends or against a bot.",
+    type: "website",
+    url: "/",
+  },
 };
 
 export default async function RootLayout({
