@@ -92,7 +92,7 @@ export type GameSession = {
 
 async function getNewGameId(rules: GameOption[]) {
   try {
-    const response = await fetch(`/matchmaking`, {
+    const response = await fetch(`${BASE_APP_URL}/matchmaking`, {
       method: "POST",
       body: JSON.stringify(rules),
       headers: {

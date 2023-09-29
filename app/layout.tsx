@@ -2,9 +2,10 @@ import { createServerComponentClient as _createServerComponentClient } from "@su
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { cookies } from "next/headers";
+import { cache } from "react";
 import { AuthProvider } from "./auth-provider";
 import "./globals.css";
-import { cache } from "react";
+import BASE_APP_URL from "@/lib/base-app-url";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +15,7 @@ export const metadata: Metadata = {
   title: "NewsReal",
   description:
     "NewsReal is a game that tests your ability to distinguish real news from AI-generated content.",
-  metadataBase: new URL(
-    (process.env.APP_URL ?? process.env.VERCEL_URL) || "http://localhost:3000/",
-  ),
+  metadataBase: new URL(BASE_APP_URL),
   openGraph: {
     siteName: "NewsReal",
     title: "Play NewsReal",

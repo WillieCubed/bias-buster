@@ -1,3 +1,5 @@
+import BASE_APP_URL from "@/lib/base-app-url";
+
 /**
  * Component properties for the InviteOthersLinkBox component.
  */
@@ -18,9 +20,7 @@ export default function InviteOthersLinkBox({
 }: InviteOthersLinkBoxProps) {
   const gameIdSegment = gameId ? `${gameId}` : "...";
 
-  const gameUrlBase = `${
-    process.env.VERCEL_URL ?? process.env.NEXT_PUBLIC_APP_URL
-  }/game/`;
+  const gameUrlBase = `${BASE_APP_URL}/game/`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(`${gameUrlBase}${gameIdSegment}`);
