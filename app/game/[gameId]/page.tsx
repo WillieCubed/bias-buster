@@ -2,6 +2,8 @@ import GameCanvas from "./components/GameCanvas";
 import PlayerList from "./components/GameSessionPlayerList";
 import RoundStatusIndicator from "./components/RoundStatusIndicator";
 
+export const dynamic = "force-dynamic";
+
 type GameSessionPageProps = {
   params: {
     gameId: string;
