@@ -18,7 +18,9 @@ export default function InviteOthersLinkBox({
 }: InviteOthersLinkBoxProps) {
   const gameIdSegment = gameId ? `${gameId}` : "...";
 
-  const gameUrlBase = `${process.env.NEXT_PUBLIC_APP_URL}/game/`;
+  const gameUrlBase = `${
+    process.env.VERCEL_URL ?? process.env.NEXT_PUBLIC_APP_URL
+  }/game/`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(`${gameUrlBase}${gameIdSegment}`);
