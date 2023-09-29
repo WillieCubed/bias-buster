@@ -1,11 +1,14 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { createServerComponentClient as _createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { cookies } from "next/headers";
 import { AuthProvider } from "./auth-provider";
 import "./globals.css";
+import { cache } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
+
+// export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: "Bias Buster",
@@ -18,7 +21,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const supabase = createServerComponentClient({ cookies });
+  const supabase = createServerSupabaseClient();
 
   const {
     data: { user },
@@ -32,3 +35,8 @@ export default async function RootLayout({
     </html>
   );
 }
+
+const createServerSupabaseClient = cache(() => {
+  const cookieStore = cookies();
+  return _createServerComponentClient({ cookies: () => cookieStore });
+});
