@@ -1,6 +1,19 @@
+"use client";
+
 import Link from "next/link";
+import { useAuth } from "../auth-provider";
 
 export default function SiteHeader() {
+  const { isSignedIn, signIn, signOut } = useAuth();
+  const handleAuth = () => {
+    if (isSignedIn) {
+      signOut();
+    } else {
+      console.log("signing in");
+      signIn();
+    }
+  };
+
   return (
     <header className="rounded-xl bg-slate-900 text-white p-4">
       <div className="flex items-center justify-between">
@@ -22,9 +35,9 @@ export default function SiteHeader() {
           <Link className="text-title-large" href="/about">
             About
           </Link> */}
-          {/* <Link className="text-title-large" href="/auth">
-            Sign in
-          </Link> */}
+          <button className="text-title-large" onClick={handleAuth}>
+            {isSignedIn ? "Sign out" : "Sign in"}
+          </button>
         </div>
       </div>
     </header>

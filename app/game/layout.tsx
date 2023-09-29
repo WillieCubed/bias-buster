@@ -1,5 +1,5 @@
 import { Metadata } from "next/types";
-import SiteHeader from "@/components/SiteHeader";
+import SiteHeader from "@/app/components/SiteHeader";
 import { PropsWithChildren } from "react";
 import GameSessionProvider from "./session-provider";
 

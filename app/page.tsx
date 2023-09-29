@@ -1,5 +1,5 @@
-import SiteHeader from "@/components/SiteHeader";
 import Link from "next/link";
+import SiteHeader from "@/app/components/SiteHeader";
 
 export default function Home() {
   return (
