@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useGameSession } from "./session-provider";
 import GameSessionPlayerList from "./[gameId]/components/GameSessionPlayerList";
+import InviteOthersLinkBox from "../components/InviteOthersLinkBox";
 
 /**
  * A matchmaking page where a user can start a new game.
@@ -43,7 +44,7 @@ export default function GameStartPage() {
           </div>
         </div>
         <div>
-          <InviteOthersBox gameId={gameId} />
+          <InviteOthersLinkBox gameId={gameId} />
         </div>
         {/* TODO: Add once available */}
         {/* <section id="options">
@@ -65,24 +66,6 @@ export default function GameStartPage() {
           </button>
         </div>
       </section>
-    </div>
-  );
-}
-
-interface InviteOthersBoxProps {
-  gameId: string | null;
-}
-
-function InviteOthersBox({ gameId }: InviteOthersBoxProps) {
-  const gameIdSegment = gameId ? `${gameId}` : "...";
-  return (
-    <div className="space-y-4">
-      <div className="text-label-large">Invite others to join</div>
-      <div className="inline-block p-4 rounded-lg bg-surface-foreground space-x-2">
-        <span className="text-title-medium">
-          {process.env.NEXT_PUBLIC_APP_URL}/game/<span>{gameIdSegment}</span>
-        </span>
-      </div>
     </div>
   );
 }
