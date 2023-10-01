@@ -7,17 +7,18 @@ import { useGameSession } from "../../session-provider";
 const ROUND_DURATION = 30;
 
 export default function RoundStatusIndicator() {
-  const { currentRound, totalRounds } = useGameSession();
+  const { currentRound, totalRounds, roundOver, setRoundOver } =
+    useGameSession();
   const [remainingTime, setRemainingTime] = useState(30);
 
-  const roundOver = remainingTime <= 0;
   const remainingTimeText = roundOver
     ? "Time is up!"
     : `${remainingTime} seconds left`;
 
   useEffect(() => {
     const timer = setInterval(() => {
-      if (remainingTime === 0) {
+      if (remainingTime <= 0) {
+        setRoundOver(true);
         clearInterval(timer);
         return;
       }
@@ -25,7 +26,7 @@ export default function RoundStatusIndicator() {
     }, 1_000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [roundOver]);
 
   return (
     <div className="space-y-4">
