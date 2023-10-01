@@ -36,11 +36,7 @@ export function AuthProvider({
 
   const router = useRouter();
 
-  // const {
-  //   data: { user },
-  // } = await supabase.auth.getUser()
   async function signIn() {
-    // sign in user
     console.log("signing in, AuthProvider");
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",

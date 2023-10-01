@@ -6,6 +6,7 @@ import { cache } from "react";
 import { AuthProvider } from "./auth-provider";
 import "./globals.css";
 import BASE_APP_URL from "@/lib/base-app-url";
+import { createServerSupabaseClient } from "./supabase-server";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,8 +46,3 @@ export default async function RootLayout({
     </html>
   );
 }
-
-const createServerSupabaseClient = cache(() => {
-  const cookieStore = cookies();
-  return _createServerComponentClient({ cookies: () => cookieStore });
-});
