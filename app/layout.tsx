@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     description:
       "NewsReal is a game that tests your ability to distinguish real news from AI-generated content. Play with your friends or against a bot.",
     type: "website",
+    images: "/og_image.png",
     url: "/",
   },
 };
